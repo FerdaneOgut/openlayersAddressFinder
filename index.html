@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="libs/bootstrap/bootstrap.min.css" >
+    <link rel="stylesheet" href="libs/jquery/jquery-ui.min.css" />
+    <link rel="stylesheet" href="libs/openlayers/ol.css" type="text/css">
+    <style>
+        .map {
+            height: 600px;
+            width: 100%;
+        }
+
+        .ol-popup {
+            position: absolute;
+            background-color: white;
+            /*--webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));*/
+            filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #cccccc;
+            bottom: 12px;
+            left: -50px;
+            min-width: 180px;
+        }
+
+        .ol-popup:after,
+        .ol-popup:before {
+            top: 100%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .ol-popup:after {
+            border-top-color: white;
+            border-width: 10px;
+            left: 48px;
+            margin-left: -10px;
+        }
+
+        .ol-popup:before {
+            border-top-color: #cccccc;
+            border-width: 11px;
+            left: 48px;
+            margin-left: -11px;
+        }
+
+        .ol-popup-closer {
+            text-decoration: none;
+            position: absolute;
+            top: 2px;
+            right: 8px;
+        }
+
+        .ol-popup-closer:after {
+            content: "x";
+        }
+    </style>
+
+    <title>OpenLayers example</title>
+</head>
+
+<body>
+    <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="p-4">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="locateMe-tab" data-toggle="tab" href="#locateMeContent"
+                            role="tab" aria-selected="true">Locate me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="search-tab" data-toggle="tab" href="#searchContent" role="tab"
+                            aria-selected="false">Search</a>
+                    </li>
+
+                </ul>
+
+
+                <div class="tab-content">
+
+
+
+                    <div class="tab-pane fade show active" id="locateMeContent" role="tabpanel"
+                        aria-labelledby="locateMe-tab">
+                        <div class="form-group row">
+                            <div class="col-9">
+                                <input type="text" id="latitude" class="form-control form-control-xs"
+                                    placeholder="Latitude" />
+                            </div>
+                            <div class="col-9">
+                                <input type="text" id="longitude" class="form-control form-control-xs"
+                                    placeholder="Longitude" />
+                            </div>
+
+                            <div class="col-3">
+                                <button type="button" id="btnLatLon" class="btn btn-primary">Go</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="searchContent" role="tabpanel" aria-labelledby="search-tab">
+                        <div class="form-group row">
+
+                            <div class="col-9">
+                                <div class="typeahead">
+                                    <input type="text" id="address" class="form-control form-control-xs"
+                                        placeholder="Search" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
+    <div style="display: none;">
+        <div id="popup" title="ROUTECAST" class="ol-popup">
+            <a href="#" id="popupcloser" class="ol-popup-closer"></a>
+            <div id="popupcontent"></div>
+        </div>
+    </div>
+
+    <div id="map" class="map"></div>
+    <script src="libs/jquery/jquery-3.5.1.js"></script>
+   
+    <script src="libs/bootstrap/bootstrap.min.js" ></script>
+    <script src="libs/jquery/jquery-ui.min.js"></script>
+    <script src="libs/openlayers/ol.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
